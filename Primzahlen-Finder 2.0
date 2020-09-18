@@ -1,0 +1,30 @@
+import time
+#Liste mit Primzahlen
+primzahlen = [2, 3, 5,]
+
+#primmax ist die höchste zu überprüfende Zahl
+primmax = int(input("Bitte gegen Sie die höchste zu überprüfende Zahl ein: "))
+start = time.time()
+#n ist die zu überprüfende Zahl
+n = 7
+
+#Zahl aus Liste durch die geteilt wird
+k = 0
+
+#Solange n in eine der zu überprüfenden Zahlen ist:
+while not n > primmax:
+    while not n%primzahlen[k]==0:
+        k = k + 1
+        if k == len(primzahlen):
+            primzahlen.append(n)
+        if primzahlen[k] * 2 > n:
+            primzahlen.append(n)
+            n = n + 2
+            k = 0
+    n = n + 2
+    k = 0
+#Ausgabe der Liste und Zeit
+ende = time.time()
+print("Die Berechnung dauerte etwa: ", '{:5.3f}s'.format(ende-start))
+print("Im Bereich zwischen 0 und ", primmax, " wurden ", len(primzahlen), "Primzahlen gefunden.")
+print(primzahlen)
